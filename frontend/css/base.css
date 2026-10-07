@@ -9,6 +9,7 @@ body {
   line-height: 1.5;
   color: var(--color-text);
   background: var(--color-bg);
+  font-feature-settings: "ss01" on;
 }
 
 h1, h2, h3 { line-height: 1.2; margin: 0 0 var(--space-3); }
@@ -50,6 +51,19 @@ p { margin: 0 0 var(--space-3); }
 .btn--primary:hover { background: var(--color-primary); filter: brightness(1.1); }
 .btn--block { display: block; width: 100%; }
 .btn:disabled { opacity: 0.6; cursor: not-allowed; }
+
+/* Consistent controls and keyboard feedback across every page. */
+:where(button, input, select, textarea, a, summary):focus-visible {
+  outline: 3px solid color-mix(in srgb, var(--color-primary) 72%, white);
+  outline-offset: 2px;
+}
+.btn { min-height: 40px; font-weight: 650; transition: background-color .16s ease, border-color .16s ease, transform .16s ease, box-shadow .16s ease; }
+.btn:hover:not(:disabled) { transform: translateY(-1px); box-shadow: 0 4px 12px rgba(23, 32, 58, .09); }
+.btn--primary:hover:not(:disabled) { filter: brightness(1.06); }
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { scroll-behavior: auto !important; animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; }
+}
 
 /* The hidden attribute must always win over component display rules. */
 [hidden] { display: none !important; }

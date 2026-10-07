@@ -30,6 +30,23 @@
 .regression-empty p { margin: 0 0 var(--space-3); color: var(--color-text-muted); }
 .regression-current { border-left: 4px solid var(--color-primary); }
 
+.regression-intro { padding: 14px 16px; border: 1px solid var(--color-border); border-left: 4px solid var(--color-primary); border-radius: var(--radius-md); background: var(--color-surface); }
+.regression-panel { border-radius: var(--radius-lg); box-shadow: var(--shadow-card); }
+.regression-section-head h2 { letter-spacing: -.025em; }
+.regression-badge { border-radius: 999px; }
+.regression-metrics article { padding: 15px; border: 1px solid var(--color-border); border-left: 3px solid var(--color-primary); border-radius: var(--radius-md); }
+.regression-metrics strong { font-size: clamp(1rem, 1.6vw, 1.2rem); }
+.regression-interpretation { padding: 14px 16px; border-radius: var(--radius-md); background: var(--color-surface-alt); }
+.regression-chart { padding: 12px; border: 1px solid var(--color-border); border-radius: var(--radius-md); background: color-mix(in srgb, var(--color-surface-alt) 48%, var(--color-surface)); }
+.regression-details { padding-top: 16px; }
+.regression-details summary { padding: 6px 0; }
+
+@media (max-width: 768px) {
+  .regression-period { width: 100%; }
+  .regression-period label { flex-basis: 100%; }
+  .regression-metrics { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+
 @media (max-width: 680px) {
   .regression-period { width: 100%; }
   .regression-panel { padding: var(--space-3); }

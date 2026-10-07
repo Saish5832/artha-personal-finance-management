@@ -41,3 +41,19 @@
 .account-line { font-size: 1.1rem; margin-bottom: var(--space-2); }
 .account-note { color: var(--color-text-muted); font-size: 0.9rem; }
 .account-actions { margin-top: var(--space-4); }
+
+.landing { position: relative; isolation: isolate; gap: clamp(22px, 4vh, 38px); padding-top: 5rem; }
+.landing::before { content: ""; position: fixed; z-index: -1; inset: 0; pointer-events: none; background: radial-gradient(ellipse at 50% 8%, color-mix(in srgb, var(--color-primary) 10%, transparent), transparent 48%); }
+.brand__name { letter-spacing: .2em; font-weight: 850; }
+.brand__subtitle { color: var(--color-text); }
+.auth-card { max-width: 27rem; padding: clamp(22px, 4vw, 32px); border-radius: var(--radius-xl); box-shadow: var(--shadow-float); }
+.tabs { border-radius: var(--radius-lg); }
+.field label { font-size: .88rem; }
+.field input { min-height: 46px; }
+.status-bar { padding: 12px 16px; border: 1px solid var(--color-border); border-radius: 999px; background: var(--color-surface); }
+
+@media (max-width: 480px) {
+  .landing { padding: 5rem 16px 24px; gap: 24px; }
+  .brand__tagline { font-size: .92rem; }
+  .status-bar { border-radius: var(--radius-lg); gap: 12px 20px; }
+}

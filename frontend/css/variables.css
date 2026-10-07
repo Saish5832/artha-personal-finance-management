@@ -1,29 +1,35 @@
 /* Design tokens. Every colour and size in the app comes from here, so light/dark
    mode is just a second set of values for the same names. */
 :root {
+  --radius-xl: 24px;
+  --color-primary-soft: #eaf0ff;
+  --shadow-float: 0 18px 44px rgba(23, 32, 58, 0.13);
   --font-sans: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
   --font-mono: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
 
   --space-1: 4px;  --space-2: 8px;  --space-3: 12px; --space-4: 16px;
   --space-5: 24px; --space-6: 32px; --space-7: 48px;
-  --radius-sm: 6px; --radius-md: 10px; --radius-lg: 16px;
+  --radius-sm: 7px; --radius-md: 12px; --radius-lg: 18px;
 
   /* Light theme */
-  --color-bg: #f5f7fb;
+  --color-bg: #f3f6fa;
   --color-surface: #ffffff;
   --color-surface-alt: #eef2f8;
-  --color-border: #dde3ee;
+  --color-border: #dce4ee;
   --color-text: #17203a;
   --color-text-muted: #5b6785;
-  --color-primary: #2a5bd7;
+  --color-primary: #2457c5;
+  --color-primary-soft: #eaf0ff;
   --color-primary-contrast: #ffffff;
   --color-success: #12805c;
   --color-warning: #b86e00;
   --color-danger: #c62a3a;
-  --shadow-card: 0 1px 3px rgba(23, 32, 58, 0.08), 0 8px 24px rgba(23, 32, 58, 0.06);
+  --shadow-card: 0 1px 2px rgba(23, 32, 58, 0.04), 0 8px 24px rgba(23, 32, 58, 0.045);
 }
 
 :root[data-theme="dark"] {
+  --color-primary-soft: #202d4c;
+  --shadow-float: 0 18px 44px rgba(0, 0, 0, 0.38);
   --color-bg: #0e1424;
   --color-surface: #161e33;
   --color-surface-alt: #1e2842;
