@@ -1,0 +1,48 @@
+.analytics { max-width: 1280px; }
+.analytics .page-head { align-items: end; margin-bottom: var(--space-5); }
+.analytics .page-head h1 { font-size: 1.8rem; }
+.analytics-kicker { margin: 0 0 var(--space-1); color: var(--color-primary); font-size: 0.7rem; font-weight: 800; letter-spacing: 0.1em; }
+.analytics-period { display: flex; align-items: end; gap: var(--space-2); flex-wrap: wrap; }
+.analytics-period label { color: var(--color-text-muted); font-size: 0.82rem; font-weight: 700; }
+.analytics-period input { min-height: 40px; padding: var(--space-2) var(--space-3); border: 1px solid var(--color-border); border-radius: var(--radius-md); color: var(--color-text); background: var(--color-surface); font: inherit; }
+.analytics-state { padding: var(--space-4); border: 1px solid var(--color-border); border-radius: var(--radius-md); background: var(--color-surface); }
+.analytics-state--error { display: flex; align-items: center; justify-content: space-between; gap: var(--space-3); border-color: color-mix(in srgb, var(--color-danger) 45%, var(--color-border)); }
+.analytics-state--error p { margin: 0; color: var(--color-danger); }
+.analytics-section { margin-top: var(--space-6); }
+.analytics-section__head { display: flex; align-items: end; justify-content: space-between; margin-bottom: var(--space-3); }
+.analytics-section__head h2 { margin: 0; font-size: 1.3rem; }
+.analytics-stats { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: var(--space-3); }
+.analytics-stats--compact { grid-template-columns: repeat(4, minmax(0, 1fr)); margin-bottom: var(--space-3); }
+.analytics-stat { min-width: 0; padding: var(--space-4); border: 1px solid var(--color-border); border-left: 3px solid var(--color-primary); border-radius: var(--radius-md); background: var(--color-surface); }
+.analytics-stat__label { min-height: 2.3em; margin: 0; color: var(--color-text-muted); font-size: 0.76rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.04em; }
+.analytics-stat__value { overflow-wrap: anywhere; margin: var(--space-2) 0 0; font-size: 1.3rem; font-weight: 750; font-variant-numeric: tabular-nums; }
+.analytics-stat__detail { margin: var(--space-1) 0 0; color: var(--color-text-muted); font-size: 0.78rem; }
+.analytics-note { margin: var(--space-2) 0 0; color: var(--color-text-muted); font-size: 0.82rem; }
+.analytics-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--space-3); }
+.analytics-panel { min-width: 0; padding: var(--space-4); border: 1px solid var(--color-border); border-radius: var(--radius-md); background: var(--color-surface); }
+.analytics-panel--wide { grid-column: 1 / -1; }
+.analytics-panel h3 { margin: 0 0 var(--space-2); font-size: 0.98rem; }
+.analytics-correlation { margin: 0 0 var(--space-2); color: var(--color-text-muted); font-size: 0.82rem; }
+.analytics-canvas { position: relative; height: 270px; }
+.analytics-empty-note { margin: var(--space-3) 0; color: var(--color-text-muted); font-size: 0.9rem; }
+.analytics-table-wrap { margin-top: var(--space-3); overflow-x: auto; border: 1px solid var(--color-border); border-radius: var(--radius-md); background: var(--color-surface); }
+.analytics-table { min-width: 720px; }
+.analytics-table td { max-width: 360px; }
+.analytics-empty { display: flex; align-items: center; gap: var(--space-3); margin-bottom: var(--space-4); padding: var(--space-4); border-left: 4px solid var(--color-primary); background: var(--color-surface-alt); flex-wrap: wrap; }
+.analytics-empty h2 { width: 100%; margin: 0; font-size: 1.05rem; }
+.analytics-empty p { flex: 1; margin: 0; color: var(--color-text-muted); font-size: 0.9rem; }
+
+@media (max-width: 1000px) {
+  .analytics-stats { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  .analytics-stats--compact { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+@media (max-width: 680px) {
+  .analytics-grid { grid-template-columns: minmax(0, 1fr); }
+  .analytics-panel--wide { grid-column: auto; }
+  .analytics-stats, .analytics-stats--compact { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .analytics-period { width: 100%; }
+}
+@media (max-width: 420px) {
+  .analytics-stats, .analytics-stats--compact { grid-template-columns: minmax(0, 1fr); }
+  .analytics-stat__label { min-height: 0; }
+}

@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Budgets - ARTHA</title>
+  <script src="/js/theme.js"></script>
+  <link rel="stylesheet" href="/css/variables.css">
+  <link rel="stylesheet" href="/css/base.css">
+  <link rel="stylesheet" href="/css/landing.css">
+  <link rel="stylesheet" href="/css/app.css">
+</head>
+<body>
+  <header id="app-header" class="app-header"></header>
+  <p id="load-error" class="form-error" role="alert" hidden></p>
+
+  <main id="protected-content" class="app-main stack" hidden>
+    <div class="page-head">
+      <div>
+        <h1>Budgets</h1>
+        <p class="page-head__sub">Utilization = actual spending ÷ budget × 100, calculated from your expense transactions.</p>
+      </div>
+      <button id="add-btn" class="btn btn--primary" type="button">+ Add budget</button>
+    </div>
+
+    <section class="stats" aria-label="Budget summary">
+      <div class="card stat"><p class="stat__label">Budgets</p><p class="stat__value" id="sum-count">-</p></div>
+      <div class="card stat"><p class="stat__label">Near limit (&gt;80%)</p><p class="stat__value" id="sum-warning">-</p></div>
+      <div class="card stat"><p class="stat__label">Over budget</p><p class="stat__value is-expense" id="sum-over">-</p></div>
+    </section>
+
+    <section class="card" aria-label="Period selector">
+      <div class="form-grid">
+        <div class="field"><label for="as-of">Show the period containing</label><input id="as-of" type="date"></div>
+        <div class="btn-row"><button id="today-btn" class="btn" type="button">Today</button></div>
+      </div>
+      <p id="list-error" class="field-error" role="alert"></p>
+    </section>
+
+    <div id="budget-grid" class="card-grid"></div>
+    <div id="budget-empty" class="card empty" hidden>No budgets yet. Add one to start tracking your spending limits.</div>
+  </main>
+
+  <dialog id="b-dialog" aria-labelledby="b-dialog-title">
+    <h2 id="b-dialog-title">Add budget</h2>
+    <form id="b-form" novalidate>
+      <div id="b-error" class="form-error" role="alert" hidden></div>
+      <div class="field"><label for="b-category">Category</label><select id="b-category"></select><p class="field-error" id="b-category-error"></p></div>
+      <div class="field"><label for="b-amount">Budget amount (₹)</label><input id="b-amount" type="number" min="0.01" step="0.01" inputmode="decimal" required><p class="field-error" id="b-amount-error"></p></div>
+      <div class="field"><label for="b-period">Period</label>
+        <select id="b-period"><option value="monthly">Monthly</option><option value="weekly">Weekly</option><option value="yearly">Yearly</option></select>
+        <p class="field-error" id="b-period-error"></p></div>
+      <div class="btn-row">
+        <button id="b-cancel" class="btn" type="button">Cancel</button>
+        <button id="b-save" class="btn btn--primary" type="submit">Save</button>
+      </div>
+    </form>
+  </dialog>
+
+  <script src="/js/utils.js"></script>
+  <script src="/js/dom.js"></script>
+  <script src="/js/api.js"></script>
+  <script src="/js/auth.js"></script>
+  <script src="/js/layout.js"></script>
+  <script src="/js/budgets.js"></script>
+</body>
+</html>

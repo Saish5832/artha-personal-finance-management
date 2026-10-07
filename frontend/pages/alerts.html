@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Insights & Alerts - ARTHA</title>
+  <script src="/js/theme.js"></script>
+  <link rel="stylesheet" href="/css/variables.css">
+  <link rel="stylesheet" href="/css/base.css">
+  <link rel="stylesheet" href="/css/landing.css">
+  <link rel="stylesheet" href="/css/app.css">
+</head>
+<body>
+  <header id="app-header" class="app-header"></header>
+  <p id="load-error" class="form-error" role="alert" hidden></p>
+
+  <main id="protected-content" class="app-main alerts" hidden>
+    <div class="page-head">
+      <div>
+        <p class="dashboard-kicker">RULE-BASED FINANCIAL INSIGHTS</p>
+        <h1>Insights & Alerts</h1>
+        <p class="page-head__sub">These insights are generated using predefined financial rules based on your recorded transactions, budgets, and goals. Each recommendation includes the condition and reason that triggered it.</p>
+      </div>
+      <p id="alerts-as-of" class="dashboard-date"></p>
+    </div>
+
+    <p id="alerts-loading" class="dashboard-state" role="status">Loading your insights...</p>
+    <section id="alerts-error" class="dashboard-state dashboard-state--error" role="alert" hidden>
+      <p id="alerts-error-message"></p>
+      <button id="alerts-retry" class="btn btn--sm" type="button">Try again</button>
+    </section>
+
+    <div id="alerts-content" hidden>
+      <section class="insights-summary" aria-label="Insight summary">
+        <article class="insight-summary-card">
+          <p class="insight-summary-card__label">Total active insights</p>
+          <h2 id="insights-total">0</h2>
+        </article>
+        <article class="insight-summary-card insight-summary-card--critical">
+          <p class="insight-summary-card__label">Critical</p>
+          <h2 id="insights-critical">0</h2>
+        </article>
+        <article class="insight-summary-card insight-summary-card--warning">
+          <p class="insight-summary-card__label">Warning</p>
+          <h2 id="insights-warning">0</h2>
+        </article>
+        <article class="insight-summary-card insight-summary-card--info">
+          <p class="insight-summary-card__label">Info</p>
+          <h2 id="insights-info">0</h2>
+        </article>
+      </section>
+
+      <div class="filter-bar" aria-label="Alert filters">
+        <button class="filter-btn is-active" data-filter="ALL" type="button">All</button>
+        <button class="filter-btn" data-filter="CRITICAL" type="button">Critical</button>
+        <button class="filter-btn" data-filter="WARNING" type="button">Warning</button>
+        <button class="filter-btn" data-filter="INFO" type="button">Info</button>
+      </div>
+
+      <div id="alerts-list" class="alert-grid" aria-live="polite"></div>
+      <p id="alerts-empty" class="empty-state" hidden>Your current financial data does not trigger any rule-based alerts.</p>
+    </div>
+  </main>
+
+  <script src="/js/utils.js"></script>
+  <script src="/js/dom.js"></script>
+  <script src="/js/api.js"></script>
+  <script src="/js/auth.js"></script>
+  <script src="/js/layout.js"></script>
+  <script src="/js/alerts.js"></script>
+</body>
+</html>

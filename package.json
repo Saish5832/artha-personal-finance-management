@@ -1,0 +1,44 @@
+{
+  "name": "artha",
+  "version": "0.1.0",
+  "description": "Artha - Personal Finance Management System",
+  "private": true,
+  "main": "backend/server.js",
+  "engines": {
+    "node": ">=18"
+  },
+  "scripts": {
+    "start": "node backend/server.js",
+    "dev": "nodemon backend/server.js",
+    "test": "jest --runInBand",
+    "test:py": "node scripts/run-pytest.js",
+    "test:all": "npm test && npm run test:py"
+  },
+  "jest": {
+    "testEnvironment": "node",
+    "testMatch": [
+      "**/tests/**/*.test.js"
+    ],
+    "setupFiles": [
+      "<rootDir>/tests/setupEnv.js"
+    ]
+  },
+  "dependencies": {
+    "bcryptjs": "^3.0.3",
+    "chart.js": "^4.5.1",
+    "cors": "^2.8.6",
+    "dotenv": "^18.0.5",
+    "express": "^5.2.1",
+    "express-validator": "^7.3.2",
+    "helmet": "^8.3.0",
+    "jsonwebtoken": "^9.0.3",
+    "mongoose": "^9.10.4",
+    "morgan": "^1.12.1"
+  },
+  "devDependencies": {
+    "jest": "^30.5.2",
+    "mongodb-memory-server": "^11.3.0",
+    "nodemon": "^3.1.14",
+    "supertest": "^7.3.1"
+  }
+}

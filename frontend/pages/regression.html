@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Financial Trends - ARTHA</title>
+  <script src="/js/theme.js"></script>
+  <link rel="stylesheet" href="/css/variables.css">
+  <link rel="stylesheet" href="/css/base.css">
+  <link rel="stylesheet" href="/css/landing.css">
+  <link rel="stylesheet" href="/css/app.css">
+  <link rel="stylesheet" href="/css/regression.css">
+</head>
+<body>
+  <header id="app-header" class="app-header"></header>
+  <p id="load-error" class="form-error" role="alert" hidden></p>
+
+  <main id="protected-content" class="app-main regression" hidden>
+    <div class="page-head">
+      <div>
+        <p class="regression-kicker">HISTORICAL FINANCIAL ANALYSIS</p>
+        <h1>Financial Trends &amp; Regression</h1>
+      </div>
+      <form id="regression-period-form" class="regression-period">
+        <label for="regression-as-of">Analyze through</label>
+        <input id="regression-as-of" type="date" required>
+        <button class="btn btn--primary" type="submit">Apply</button>
+      </form>
+    </div>
+    <p class="regression-intro">This section analyzes your historical financial data using linear regression. It describes past trends and relationships; it does not guarantee future results.</p>
+
+    <p id="regression-loading" class="regression-state" role="status">Analyzing your historical data...</p>
+    <section id="regression-error" class="regression-state regression-state--error" role="alert" hidden>
+      <p id="regression-error-message"></p>
+      <button id="regression-retry" class="btn btn--sm" type="button">Try again</button>
+    </section>
+
+    <div id="regression-content" hidden>
+      <section id="regression-insufficient" class="regression-empty" hidden>
+        <h2>More history is needed</h2>
+        <p id="regression-insufficient-message"></p>
+        <a class="btn btn--primary" href="/pages/transactions.html">View transactions</a>
+      </section>
+
+      <section class="regression-panel" aria-labelledby="expenditure-title">
+        <div class="regression-section-head">
+          <div><p class="regression-kicker">01 / EXPENDITURE</p><h2 id="expenditure-title">Monthly Expenditure Historical Trend</h2></div>
+          <span id="expenditure-status" class="regression-badge"></span>
+        </div>
+        <div id="expenditure-insufficient" class="regression-inline-empty" hidden></div>
+        <div id="expenditure-analysis" hidden>
+          <div class="regression-metrics">
+            <article><span>Months analyzed</span><strong id="expenditure-months"></strong></article>
+            <article><span>Average trend change</span><strong id="expenditure-change"></strong></article>
+            <article><span>Trend strength</span><strong id="expenditure-strength"></strong></article>
+          </div>
+          <p id="expenditure-interpretation" class="regression-interpretation"></p>
+          <div class="regression-chart"><canvas id="expenditure-chart" aria-label="Actual monthly expenditure and fitted historical trend line"></canvas></div>
+        </div>
+        <details class="regression-details" id="expenditure-details" hidden>
+          <summary>How was this calculated?</summary>
+          <dl class="regression-facts">
+            <dt>Equation</dt><dd id="expenditure-equation"></dd>
+            <dt>Coefficient / slope</dt><dd id="expenditure-coefficient"></dd>
+            <dt>Intercept</dt><dd id="expenditure-intercept"></dd>
+            <dt>R²</dt><dd id="expenditure-r2"></dd>
+            <dt>Observations</dt><dd id="expenditure-observations"></dd>
+          </dl>
+        </details>
+      </section>
+
+      <section class="regression-panel" aria-labelledby="income-savings-title">
+        <div class="regression-section-head">
+          <div><p class="regression-kicker">02 / INCOME &amp; SAVINGS</p><h2 id="income-savings-title">Monthly Income vs Savings</h2></div>
+          <span id="income-savings-status" class="regression-badge"></span>
+        </div>
+        <div id="income-savings-insufficient" class="regression-inline-empty" hidden></div>
+        <div id="income-savings-analysis" hidden>
+          <div class="regression-metrics">
+            <article><span>Historical relationship</span><strong id="income-savings-relationship"></strong></article>
+            <article><span>Months analyzed</span><strong id="income-savings-months"></strong></article>
+            <article><span>Relationship strength</span><strong id="income-savings-strength"></strong></article>
+          </div>
+          <p id="income-savings-interpretation" class="regression-interpretation"></p>
+          <div class="regression-chart"><canvas id="income-savings-chart" aria-label="Monthly income and savings observations with fitted regression line"></canvas></div>
+        </div>
+        <details class="regression-details" id="income-savings-details" hidden>
+          <summary>How was this calculated?</summary>
+          <dl class="regression-facts">
+            <dt>Equation</dt><dd id="income-savings-equation"></dd>
+            <dt>Coefficient / slope</dt><dd id="income-savings-coefficient"></dd>
+            <dt>Intercept</dt><dd id="income-savings-intercept"></dd>
+            <dt>R²</dt><dd id="income-savings-r2"></dd>
+            <dt>Observations</dt><dd id="income-savings-observations"></dd>
+          </dl>
+        </details>
+      </section>
+
+      <section id="current-comparison" class="regression-panel regression-current" aria-labelledby="current-title" hidden>
+        <div class="regression-section-head">
+          <div><p class="regression-kicker">03 / CURRENT MONTH</p><h2 id="current-title">Current Spending vs Historical Trend</h2></div>
+          <span id="current-status" class="regression-badge"></span>
+        </div>
+        <div class="regression-metrics regression-metrics--three">
+          <article><span>Current expenditure</span><strong id="current-actual"></strong></article>
+          <article><span>Historical trend</span><strong id="current-trend"></strong></article>
+          <article><span>Difference</span><strong id="current-difference"></strong></article>
+        </div>
+        <p id="current-interpretation" class="regression-interpretation"></p>
+      </section>
+    </div>
+  </main>
+
+  <script src="/js/utils.js"></script>
+  <script src="/js/dom.js"></script>
+  <script src="/js/api.js"></script>
+  <script src="/js/auth.js"></script>
+  <script src="/js/layout.js"></script>
+  <script src="/vendor/chart.umd.js"></script>
+  <script src="/js/regression.js"></script>
+</body>
+</html>

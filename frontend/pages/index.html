@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>ARTHA - Personal Finance Management System</title>
+  <script src="/js/theme.js"></script>
+  <link rel="stylesheet" href="/css/variables.css">
+  <link rel="stylesheet" href="/css/base.css">
+  <link rel="stylesheet" href="/css/landing.css">
+</head>
+<body>
+  <main class="landing">
+    <button id="theme-toggle" class="btn landing__theme-toggle" type="button" aria-label="Toggle light or dark theme">Theme</button>
+
+    <header class="brand">
+      <h1 class="brand__name">ARTHA</h1>
+      <p class="brand__subtitle">Personal Finance Management System</p>
+      <p class="brand__tagline">Track your money. Understand your spending. Reach your goals.</p>
+    </header>
+
+    <section class="card auth-card" aria-label="Log in or create an account">
+      <div class="tabs" role="tablist">
+        <button id="tab-login" class="tabs__tab" role="tab" type="button" aria-selected="true" aria-controls="login-form">Log in</button>
+        <button id="tab-register" class="tabs__tab" role="tab" type="button" aria-selected="false" aria-controls="register-form">Create account</button>
+      </div>
+
+      <div id="form-error" class="form-error" role="alert" hidden></div>
+
+      <form id="login-form" role="tabpanel" aria-labelledby="tab-login" novalidate>
+        <div class="field">
+          <label for="login-email">Email</label>
+          <input id="login-email" name="email" type="email" autocomplete="email" required>
+          <p class="field-error" id="login-email-error"></p>
+        </div>
+        <div class="field">
+          <label for="login-password">Password</label>
+          <input id="login-password" name="password" type="password" autocomplete="current-password" required>
+          <p class="field-error" id="login-password-error"></p>
+        </div>
+        <button class="btn btn--primary btn--block" type="submit">Log in</button>
+      </form>
+
+      <form id="register-form" role="tabpanel" aria-labelledby="tab-register" novalidate hidden>
+        <div class="field">
+          <label for="register-name">Full name</label>
+          <input id="register-name" name="name" type="text" autocomplete="name" maxlength="60" required>
+          <p class="field-error" id="register-name-error"></p>
+        </div>
+        <div class="field">
+          <label for="register-email">Email</label>
+          <input id="register-email" name="email" type="email" autocomplete="email" required>
+          <p class="field-error" id="register-email-error"></p>
+        </div>
+        <div class="field">
+          <label for="register-password">Password</label>
+          <input id="register-password" name="password" type="password" autocomplete="new-password" required>
+          <p class="field-hint">At least 8 characters, with a letter and a number.</p>
+          <p class="field-error" id="register-password-error"></p>
+        </div>
+        <div class="field">
+          <label for="register-confirm">Confirm password</label>
+          <input id="register-confirm" name="confirm" type="password" autocomplete="new-password" required>
+          <p class="field-error" id="register-confirm-error"></p>
+        </div>
+        <button class="btn btn--primary btn--block" type="submit">Create account</button>
+      </form>
+    </section>
+
+    <footer class="status-bar" aria-label="System status">
+      <span>API <span id="status-api" class="badge">Checking...</span></span>
+      <span>Database <span id="status-db" class="badge">Checking...</span></span>
+    </footer>
+  </main>
+
+  <script src="/js/utils.js"></script>
+  <script src="/js/api.js"></script>
+  <script src="/js/auth.js"></script>
+  <script src="/js/index.js"></script>
+</body>
+</html>

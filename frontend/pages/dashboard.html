@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Dashboard - ARTHA</title>
+  <script src="/js/theme.js"></script>
+  <link rel="stylesheet" href="/css/variables.css">
+  <link rel="stylesheet" href="/css/base.css">
+  <link rel="stylesheet" href="/css/landing.css">
+  <link rel="stylesheet" href="/css/app.css">
+  <link rel="stylesheet" href="/css/dashboard.css">
+</head>
+<body>
+  <header id="app-header" class="app-header"></header>
+  <p id="load-error" class="form-error" role="alert" hidden></p>
+
+  <main id="protected-content" class="app-main dashboard" hidden>
+    <div class="page-head">
+      <div>
+        <p class="dashboard-kicker">PERSONAL FINANCE OVERVIEW</p>
+        <h1>Welcome back, <span id="account-name"></span></h1>
+        <p class="page-head__sub">Your financial activity at a glance.</p>
+      </div>
+      <p id="dashboard-as-of" class="dashboard-date"></p>
+    </div>
+
+    <p id="dashboard-loading" class="dashboard-state" role="status">Loading your dashboard...</p>
+    <section id="dashboard-error" class="dashboard-state dashboard-state--error" role="alert" hidden>
+      <p id="dashboard-error-message"></p>
+      <button id="dashboard-retry" class="btn btn--sm" type="button">Try again</button>
+    </section>
+
+    <div id="dashboard-data" hidden>
+      <section id="empty-activity" class="dashboard-empty" hidden>
+        <div>
+          <h2>Your overview starts with a transaction</h2>
+          <p>Once you record income or spending, your totals and trends will appear here.</p>
+        </div>
+        <a class="btn btn--primary" href="/pages/transactions.html">Add a transaction</a>
+      </section>
+
+      <section id="summary-grid" class="dashboard-stats" aria-label="Financial summary"></section>
+
+      <section class="health-panel" aria-labelledby="health-title">
+        <div class="health-panel__mark" aria-hidden="true"></div>
+        <div>
+          <p class="dashboard-kicker">FINANCIAL HEALTH</p>
+          <h2 id="health-title"></h2>
+          <ul id="health-details"></ul>
+        </div>
+      </section>
+
+      <section class="dashboard-section" aria-labelledby="insights-title">
+        <div class="dashboard-section__head">
+          <div>
+            <p class="dashboard-kicker">FINANCIAL INSIGHTS</p>
+            <h2 id="insights-title">Rule-based financial alerts</h2>
+          </div>
+          <a class="dashboard-link" href="/pages/alerts.html">View All Insights</a>
+        </div>
+        <div id="dashboard-insights" class="dashboard-alerts" aria-live="polite"></div>
+        <p id="dashboard-insights-empty" class="chart-empty" hidden>No active insights for this period.</p>
+      </section>
+
+      <section class="dashboard-section" aria-labelledby="charts-title">
+        <div class="dashboard-section__head">
+          <div>
+            <p class="dashboard-kicker">SIX-MONTH VIEW</p>
+            <h2 id="charts-title">Trends and allocation</h2>
+          </div>
+        </div>
+        <div class="dashboard-charts">
+          <article class="dashboard-chart">
+            <h3>Income vs expenses</h3>
+            <div class="dashboard-chart__canvas"><canvas id="chart-income-expense" aria-label="Monthly income versus expenses"></canvas></div>
+          </article>
+          <article class="dashboard-chart">
+            <h3>Expense trend</h3>
+            <div class="dashboard-chart__canvas"><canvas id="chart-expense-trend" aria-label="Monthly expense trend"></canvas></div>
+          </article>
+          <article class="dashboard-chart">
+            <h3>Expense by category</h3>
+            <div class="dashboard-chart__canvas"><canvas id="chart-category" aria-label="Expenses by category"></canvas></div>
+            <p id="chart-category-empty" class="chart-empty" hidden>No expenses recorded in this period.</p>
+          </article>
+          <article class="dashboard-chart">
+            <h3>Budget vs actual</h3>
+            <div class="dashboard-chart__canvas"><canvas id="chart-budget" aria-label="Budget compared with actual spending"></canvas></div>
+            <p id="chart-budget-empty" class="chart-empty" hidden>No budgets have been set yet.</p>
+          </article>
+          <article class="dashboard-chart dashboard-chart--wide">
+            <h3>Savings trend</h3>
+            <div class="dashboard-chart__canvas"><canvas id="chart-savings" aria-label="Monthly net savings trend"></canvas></div>
+          </article>
+        </div>
+      </section>
+
+      <section class="dashboard-section" aria-labelledby="recent-title">
+        <div class="dashboard-section__head">
+          <div>
+            <p class="dashboard-kicker">LATEST ACTIVITY</p>
+            <h2 id="recent-title">Recent transactions</h2>
+          </div>
+          <a class="dashboard-link" href="/pages/transactions.html">View all transactions</a>
+        </div>
+        <div class="table-wrap dashboard-table-wrap">
+          <table class="data dashboard-table">
+            <thead><tr><th>Date</th><th>Description</th><th>Category</th><th>Type</th><th class="num">Amount</th></tr></thead>
+            <tbody id="recent-transactions"></tbody>
+          </table>
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <script src="/js/utils.js"></script>
+  <script src="/js/dom.js"></script>
+  <script src="/js/api.js"></script>
+  <script src="/js/auth.js"></script>
+  <script src="/js/layout.js"></script>
+  <script src="/vendor/chart.umd.js"></script>
+  <script src="/js/dashboard.js"></script>
+</body>
+</html>

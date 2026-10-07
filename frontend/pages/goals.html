@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Goals - ARTHA</title>
+  <script src="/js/theme.js"></script>
+  <link rel="stylesheet" href="/css/variables.css">
+  <link rel="stylesheet" href="/css/base.css">
+  <link rel="stylesheet" href="/css/landing.css">
+  <link rel="stylesheet" href="/css/app.css">
+</head>
+<body>
+  <header id="app-header" class="app-header"></header>
+  <p id="load-error" class="form-error" role="alert" hidden></p>
+
+  <main id="protected-content" class="app-main stack" hidden>
+    <div class="page-head">
+      <div>
+        <h1>Savings goals</h1>
+        <p class="page-head__sub">Remaining = target − current. Estimated months = remaining ÷ monthly contribution.</p>
+      </div>
+      <button id="add-btn" class="btn btn--primary" type="button">+ Add goal</button>
+    </div>
+
+    <section class="stats" aria-label="Goal summary">
+      <div class="card stat"><p class="stat__label">Goals</p><p class="stat__value" id="sum-count">-</p></div>
+      <div class="card stat"><p class="stat__label">Active</p><p class="stat__value" id="sum-active">-</p></div>
+      <div class="card stat"><p class="stat__label">Completed</p><p class="stat__value is-income" id="sum-completed">-</p></div>
+    </section>
+    <p id="list-error" class="field-error" role="alert"></p>
+
+    <div id="goal-grid" class="card-grid"></div>
+    <div id="goal-empty" class="card empty" hidden>No goals yet. Add one to start saving towards something.</div>
+  </main>
+
+  <dialog id="g-dialog" aria-labelledby="g-dialog-title">
+    <h2 id="g-dialog-title">Add goal</h2>
+    <form id="g-form" novalidate>
+      <div id="g-error" class="form-error" role="alert" hidden></div>
+      <div class="field"><label for="g-name">Goal name</label><input id="g-name" type="text" maxlength="80" required><p class="field-error" id="g-name-error"></p></div>
+      <div class="field"><label for="g-targetAmount">Target amount (₹)</label><input id="g-targetAmount" type="number" min="1" step="0.01" inputmode="decimal" required><p class="field-error" id="g-targetAmount-error"></p></div>
+      <div class="field"><label for="g-currentAmount">Saved so far (₹)</label><input id="g-currentAmount" type="number" min="0" step="0.01" inputmode="decimal"><p class="field-error" id="g-currentAmount-error"></p></div>
+      <div class="field"><label for="g-monthlyContribution">Monthly contribution (₹)</label><input id="g-monthlyContribution" type="number" min="0" step="0.01" inputmode="decimal"><p class="field-error" id="g-monthlyContribution-error"></p></div>
+      <div class="field"><label for="g-targetDate">Target date (optional)</label><input id="g-targetDate" type="date"><p class="field-error" id="g-targetDate-error"></p></div>
+      <div class="btn-row">
+        <button id="g-cancel" class="btn" type="button">Cancel</button>
+        <button id="g-save" class="btn btn--primary" type="submit">Save</button>
+      </div>
+    </form>
+  </dialog>
+
+  <dialog id="c-dialog" aria-labelledby="c-dialog-title">
+    <h2 id="c-dialog-title">Add money to goal</h2>
+    <form id="c-form" novalidate>
+      <div id="c-error" class="form-error" role="alert" hidden></div>
+      <div class="field"><label for="c-amount">Amount (₹)</label><input id="c-amount" type="number" min="0.01" step="0.01" inputmode="decimal" required><p class="field-error" id="c-amount-error"></p></div>
+      <div class="btn-row">
+        <button id="c-cancel" class="btn" type="button">Cancel</button>
+        <button id="c-save" class="btn btn--primary" type="submit">Add</button>
+      </div>
+    </form>
+  </dialog>
+
+  <script src="/js/utils.js"></script>
+  <script src="/js/dom.js"></script>
+  <script src="/js/api.js"></script>
+  <script src="/js/auth.js"></script>
+  <script src="/js/layout.js"></script>
+  <script src="/js/goals.js"></script>
+</body>
+</html>

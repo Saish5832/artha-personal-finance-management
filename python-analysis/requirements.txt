@@ -1,0 +1,5 @@
+numpy>=1.26
+pandas>=2.1
+pytest>=8.0
+# Optional: only used to cross-check the NumPy regression in tests
+# scikit-learn>=1.4
